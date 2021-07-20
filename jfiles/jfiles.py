@@ -127,3 +127,33 @@ def replace_lines_in_file(file_path, line_to_replace, new_line):
         return False
     line_numbers = get_line_numbers_from_lines_in_file(file_path, [line_to_replace])
     return(set_line_numbers_to_line_in_file(file_path, line_numbers, new_line))
+
+def get_value_from_file(file_path, value_key):
+    if not does_file_exist(file_path):
+        return None
+    lines = get_all_lines_from_file(file_path)
+    for line in lines:
+        if line.startswith(value_key + "="):
+            if len(line) <= len(value_key)+2: # line: "value_key="
+                return None
+            return_value = line[len(value_key)+1:]
+            return_value = return_value.replace("\n", "")
+            return_value = return_value.replace("!@/n", "\n")
+            return return_value
+    return None
+
+def set_value_in_file(file_path, value_key, value):
+    value_key = value_key.replace("=", "_")
+    value = value.replace('\n', "!@/n")
+    if not does_file_exist(file_path):
+        append_line_to_file(file_path, value_key + "=" + str(value))
+        return
+
+    lines = get_all_lines_from_file(file_path)
+    text = open(file_path, 'w')
+    for line in lines:
+        if line.startswith(value_key + "="):
+            text.write(value_key + "=" + str(value) + "\n")
+        else:
+            text.write(line)
+    text.close()

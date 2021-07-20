@@ -21,6 +21,9 @@ Easy file handling
     If file doesn't exist, file will be created.
 
 
+- `get_value_from_file(file_path, value_key)` - Returns None, if file not found, value not found, or value empty. Otherwise returns a string. File has to have the value in this format: `value_key=value`. `!@/n` will be converted to newlines (`\n`)
+- `set_value_in_file(file_path, value_key, value)` - Self explaining. Newlines (`\n`) are converted to `!@/n`.
+
 - `remove_all_lines_with_phrase_from_file(file_path, phrase)` - returns false, if an error occurs, otherwise true. Also returns true, if no line was removed.
 - `replace_lines_in_file(file_path, line_to_replace, new_line)` - returns false, if an error occurs, otherwise true.lso returns true, if no line was changed.
 - `remove_lines_from_file(file_path, lines)` - Removes the given lines (array of strings, no `\n` needed) from the file.
