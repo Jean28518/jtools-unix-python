@@ -151,9 +151,13 @@ def set_value_in_file(file_path, value_key, value):
 
     lines = get_all_lines_from_file(file_path)
     text = open(file_path, 'w')
+    value_written = False
     for line in lines:
         if line.startswith(value_key + "="):
             text.write(value_key + "=" + str(value) + "\n")
+            value_written = True
         else:
             text.write(line)
     text.close()
+    if not value_written:
+        append_line_to_file(file_path, value_key + "=" + str(value))
