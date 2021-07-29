@@ -11,6 +11,27 @@ Don't expect too much!
 
 ## Modules
 
+### jessentials
+
+- `ensure_root_privileges()` - Checks, if script is running as root user. Otherwise exits with error message
+- `is_scirpt_running_as_root` - Returns boolean whether this script is running as root user.
+
+- `does_file_exist(file_paht)` - Returns boolean
+
+- `replace_tilde_to_home(folder_path)` - Turns e.g. `~/Dowloads/file.txt` to `/home/jean/Downloads/file.txt`. Returns the new path as string.
+
+- `run_command(command, print_output=True, return_output=False, enviroment = {})` - Runs the command in foreground
+    - `command`: String containing the full command. Example: `apt install firefox -y`
+    - `print_output`: If not set to False, the output of the command is printed to the stdout.
+    - `return_output`: If set to True, returns the output as array of strings.
+    - `enviroment`: Here you can set Inviroment variables in a dict. Example: `{'DEBIAN_FRONTEND': 'noninteractive'}`
+
+- `get_arguments()` - Returns all given arguments in an array of strings
+- `get_value_from_arguments(value_key, default=None)` - If user gave argument, then it returns the given value. Otherwise returnes the default value, which you can set optionally. Example for correct argument: `--hostname=192.168.1.1`
+- `is_argument_option_given(long_code="", short_code="")` - Checks, if user give an argument without a value. Example: `long_code="recursive", short_code="r"` User: `--recursive` or `-xry` -> then this function returns True, otherwise False.
+
+- `fail(error_message="")` - Exits script imediately and optionally prints given error message.
+
 ### jfiles
 Easy file handling
 
@@ -33,3 +54,10 @@ Easy file handling
 - `remove_line_numbers_from_file(file_path, line_numbers)` - Removes the given lines_numbers (array of ints) from the file.
 - `get_line_numbers_from_lines_in_file(file_path, lines)` - returns an array of numbers, where the specific lines are. lines is an array of strings. This function can search for mutliple lines in one run. Returns an empty array, if nothing was found. No `\n` needed.
 - `set_line_numbers_to_line_in_file(file_path, line_numbers, new_line)` - replaces the given line numbers (array of ints) with the string in new_line. Returns false, if no file was found. If some line number are bigger than the current lines in the file `\n` will be inserted, until the given line(s) where reached. new_line doesn't need `\n`.
+
+### jfolders
+- `touch_folder(folder_path)` - Ensures that given folder path exists. Otherwise it creates all folders to the given path.
+- `does_folder_exist(folder_path)` - Returns boolean.
+- `replace_tilde_to_home(folder_path)` - Turns e.g. `~/Dowloads/file.txt` to `/home/jean/Downloads/file.txt`. Returns the new path as string.
+- `get_folder_entries(folder_path)`- Returns an array of strings with the full path of the entries of a folder.
+- `get_folder_entry_names(folder_path)` - As `get_folder_entries(folder_path)`, but only retrives the names of the folder entries, not the whole path.
