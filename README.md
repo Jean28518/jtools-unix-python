@@ -50,7 +50,7 @@ Easy file handling
 - `remove_lines_from_file(file_path, lines)` - Removes the given lines (array of strings, no `\n` needed) from the file.
 
 
-- `get_line_numbers_with_phrase(file_path, phrase)` - Returns an array of ints, in which lines the given phrase are located.
+- `get_line_numbers_with_phrase(file_path, phrase)` - Returns an array of ints, in which lines the given phrase are located. Counting starts from 1.
 - `remove_line_numbers_from_file(file_path, line_numbers)` - Removes the given lines_numbers (array of ints) from the file.
 - `get_line_numbers_from_lines_in_file(file_path, lines)` - returns an array of numbers, where the specific lines are. lines is an array of strings. This function can search for mutliple lines in one run. Returns an empty array, if nothing was found. No `\n` needed.
 - `set_line_numbers_to_line_in_file(file_path, line_numbers, new_line)` - replaces the given line numbers (array of ints) with the string in new_line. Returns false, if no file was found. If some line number are bigger than the current lines in the file `\n` will be inserted, until the given line(s) where reached. new_line doesn't need `\n`.
