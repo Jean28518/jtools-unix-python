@@ -161,3 +161,15 @@ def set_value_in_file(file_path, value_key, value):
     text.close()
     if not value_written:
         append_line_to_file(file_path, value_key + "=" + str(value))
+
+# Overwrites existing file
+def write_lines_to_file(file_path, lines = []):
+    if does_file_exist(file_path):
+        os.remove(file_path)
+    for line in lines:
+        line = line.replace("\n", "")
+        append_line_to_file(file_path, line)
+
+def copy_file(source_path, destination_path):
+    lines = get_all_lines_from_file(source_path)
+    write_lines_to_file(destination_path, lines)

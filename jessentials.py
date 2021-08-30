@@ -76,3 +76,16 @@ def fail(error_message="", errno=-1):
         print("Script failed!")
 
     sys.exit()
+
+def remove_duplicates(array = []):
+    return_array = []
+    for element in array:
+        if not is_element_in_array(return_array, element):
+            return_array.append(element)
+    return return_array
+
+def is_element_in_array(array, element):
+    for e in array:
+        if e == element:
+            return True
+    return False

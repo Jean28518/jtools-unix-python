@@ -32,28 +32,33 @@ Don't expect too much!
 
 - `fail(error_message="")` - Exits script imediately and optionally prints given error message.
 
+- `remove_duplicates(array)` - Returns a array without duplicated elements.
+- `is_element_in_array(array, element)` - Returns true if array has given element. Otherwise returns false.
+
 ### jfiles
 Easy file handling
 
-- `does_file_exist(string: file_path)` returns true or false
+- `does_file_exist(string: file_path)` returns true or false.
+- `copy_file(source_path, destination_path)` - Copies file at source_path to destination_path. May overwrites existing file.
 - `get_all_lines_from_file(file_path)` - Returns an array of strings.
     Every string has a `\n` sign in the end.
-- `append_line_to_file(file_path, line)` - `\n` signs are added automaticly.
+- `write_lines_to_file(file_path, lines)` - Writes array of strings to given path. May overwrite existing file.
+- `append_line_to_file(file_path, line)` - `\n` signs are added automatically.
     If file doesn't exist, file will be created.
-
-
+---
 - `get_value_from_file(file_path, value_key)` - Returns None, if file not found, value not found, or value empty. Otherwise returns a string. File has to have the value in this format: `value_key=value`. `!@/n` will be converted to newlines (`\n`)
 - `set_value_in_file(file_path, value_key, value)` - Self explaining. Newlines (`\n`) are converted to `!@/n`.
 
 - `remove_all_lines_with_phrase_from_file(file_path, phrase)` - returns false, if an error occurs, otherwise true. Also returns true, if no line was removed.
 - `replace_lines_in_file(file_path, line_to_replace, new_line)` - returns false, if an error occurs, otherwise true.lso returns true, if no line was changed.
 - `remove_lines_from_file(file_path, lines)` - Removes the given lines (array of strings, no `\n` needed) from the file.
-
-
+---
 - `get_line_numbers_with_phrase(file_path, phrase)` - Returns an array of ints, in which lines the given phrase are located. Counting starts from 1.
 - `remove_line_numbers_from_file(file_path, line_numbers)` - Removes the given lines_numbers (array of ints) from the file.
 - `get_line_numbers_from_lines_in_file(file_path, lines)` - returns an array of numbers, where the specific lines are. lines is an array of strings. This function can search for mutliple lines in one run. Returns an empty array, if nothing was found. No `\n` needed.
 - `set_line_numbers_to_line_in_file(file_path, line_numbers, new_line)` - replaces the given line numbers (array of ints) with the string in new_line. Returns false, if no file was found. If some line number are bigger than the current lines in the file `\n` will be inserted, until the given line(s) where reached. new_line doesn't need `\n`.
+
+
 
 ### jfolders
 - `touch_folder(folder_path)` - Ensures that given folder path exists. Otherwise it creates all folders to the given path.
