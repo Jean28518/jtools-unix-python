@@ -171,5 +171,4 @@ def write_lines_to_file(file_path, lines = []):
         append_line_to_file(file_path, line)
 
 def copy_file(source_path, destination_path):
-    lines = get_all_lines_from_file(source_path)
-    write_lines_to_file(destination_path, lines)
+    os.system("cp '" + source_path + "' '" + destination_path + "'")
