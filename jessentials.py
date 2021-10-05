@@ -89,3 +89,14 @@ def is_element_in_array(array, element):
         if e == element:
             return True
     return False
+
+
+def get_table_of_csv_file(file_path):
+    if not does_file_exist(file_path):
+        fail("Can't find file: " + file_path)
+    csv_file = open(file_path, 'r')
+    csv_reader = csv.reader(csv_file)
+    csv_raw_table = []
+    for csv_line in csv_reader:
+        csv_raw_table.append(csv_line)
+    return csv_raw_table
