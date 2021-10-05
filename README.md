@@ -35,6 +35,8 @@ Don't expect too much!
 - `remove_duplicates(array)` - Returns a array without duplicated elements.
 - `is_element_in_array(array, element)` - Returns true if array has given element. Otherwise returns false.
 
+- `get_table_of_csv_file(file_path)` - Reads a csv file and returns a resulting 2 dimensional array.
+
 ### jfiles
 Easy file handling
 
