@@ -37,6 +37,8 @@ Don't expect too much!
 
 - `get_table_of_csv_file(file_path)` - Reads a csv file and returns a resulting 2 dimensional array.
 
+- `get_accessible_table_of_raw_csv_table(csv_raw_table)` - Input a table like e.g. `[["City", "Distance"], ["Nuremberg", 35], ["Munich", 87,4]]`, returns a table like: `[{"City": "Nuremberg", "Distance": 35} , {"City": "Munich", "Distance": 87,4}]`. You can easily acces such a table through: `table[0]["City"]` *In this example it would return 'Nuremberg'.*
+
 ### jfiles
 Easy file handling
 
