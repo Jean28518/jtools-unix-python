@@ -100,3 +100,16 @@ def get_table_of_csv_file(file_path):
     for csv_line in csv_reader:
         csv_raw_table.append(csv_line)
     return csv_raw_table
+
+
+# Get's a table like this: [["City", "Distance"], ["Nuremberg", 35], ["Munich", 87,4]]
+# Returns a table like this: [{"City": "Nuremberg", "Distance": 35} , {"City": "Munich", "Distance": 87,4}]
+# Access: table[1]["City"] -> "Munich"
+def get_accessible_table_of_raw_csv_table(csv_raw_table):
+    return_table = []
+    for i in range(1, len(csv_raw_table)):
+        entry_line = {}
+        for j in range(len(csv_raw_table[0])):
+            entry_line[csv_raw_table[0][j]] = (csv_raw_table[i][j])
+        return_table.append(entry_line)
+    return return_table
