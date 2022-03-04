@@ -32,6 +32,8 @@ Don't expect too much!
 
 - `fail(error_message="")` - Exits script imediately and optionally prints given error message.
 
+- `printerr(message)` - Prints an error message to stderr.
+
 - `remove_duplicates(array)` - Returns a array without duplicated elements.
 - `is_element_in_array(array, element)` - Returns true if array has given element. Otherwise returns false.
 
