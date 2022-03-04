@@ -57,6 +57,7 @@ def get_value_from_arguments(value_key, default=None):
             return return_value
     return default
 
+
 ## short code: -h   long code: --help
 def is_argument_option_given(long_code="", short_code=""):
     args = get_arguments()
@@ -68,21 +69,29 @@ def is_argument_option_given(long_code="", short_code=""):
             return True
     return False
 
+
 # TODO: Implement Errno
 def fail(error_message="", errno=-1):
     if (error_message != ""):
-        print(error_message)
+        printerr(error_message)
     else:
-        print("Script failed!")
+        printerr("Script failed!")
 
     sys.exit()
 
+
+def printerr(msg):
+    sys.stderr.write("Error: %s\n" % msg)
+    sys.stderr.flush()
+
+    
 def remove_duplicates(array = []):
     return_array = []
     for element in array:
         if not is_element_in_array(return_array, element):
             return_array.append(element)
     return return_array
+
 
 def is_element_in_array(array, element):
     for e in array:
