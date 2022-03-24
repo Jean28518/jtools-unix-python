@@ -170,5 +170,10 @@ def write_lines_to_file(file_path, lines = []):
         line = line.replace("\n", "")
         append_line_to_file(file_path, line)
 
+
+def get_string_of_file(file_path):
+    return open(file_path, 'r').read()
+
+
 def copy_file(source_path, destination_path):
     os.system("cp '" + source_path + "' '" + destination_path + "'")
