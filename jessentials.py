@@ -2,6 +2,7 @@
 # License: Apache License 2.0
 
 import errno
+import json
 import os
 import subprocess
 import sys
@@ -122,3 +123,24 @@ def get_accessible_table_of_raw_csv_table(csv_raw_table):
             entry_line[csv_raw_table[0][j]] = (csv_raw_table[i][j])
         return_table.append(entry_line)
     return return_table
+
+
+def download_file(link, destination_folder):
+    run_command("wget %s -P %s" % (link, destination_folder), False)
+
+
+def get_filename_of_path(path):
+    elements = path.split('/')
+    return elements[-1]
+
+# Returns the location of the new folder
+def unzip_file(file_path):
+    file_name_zip = get_filename_of_path(file_path)
+    file_name = file_name_zip.replace(".zip", "")
+    path = file_path.replace(file_name_zip, "")
+    run_command("mkdir %s%s" % (path, file_name), False)
+    run_command("unzip -o %s -d %s%s" % (file_path, path, file_name), False)
+    return "%s%s" % (path, file_name)
+
+def import_json_string(string):
+    return json.loads(string)
