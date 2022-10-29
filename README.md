@@ -41,6 +41,10 @@ Don't expect too much!
 
 - `get_accessible_table_of_raw_csv_table(csv_raw_table)` - Input a table like e.g. `[["City", "Distance"], ["Nuremberg", 35], ["Munich", 87,4]]`, returns a table like: `[{"City": "Nuremberg", "Distance": 35} , {"City": "Munich", "Distance": 87,4}]`. You can easily acces such a table through: `table[0]["City"]` *In this example it would return 'Nuremberg'.*
 
+- `add_arrays(arr1, arr2): Array` - returns an array in which all elements of arr2 are inserted into the first one.
+
+- `get_current_distribution(): String` - Returns e.g. `linuxmint` or `unknown` if it was not recognized.
+
 ### jfiles
 Easy file handling
 
@@ -63,6 +67,9 @@ Easy file handling
 - `remove_line_numbers_from_file(file_path, line_numbers)` - Removes the given lines_numbers (array of ints) from the file.
 - `get_line_numbers_from_lines_in_file(file_path, lines)` - returns an array of numbers, where the specific lines are. lines is an array of strings. This function can search for mutliple lines in one run. Returns an empty array, if nothing was found. No `\n` needed.
 - `set_line_numbers_to_line_in_file(file_path, line_numbers, new_line)` - replaces the given line numbers (array of ints) with the string in new_line. Returns false, if no file was found. If some line number are bigger than the current lines in the file `\n` will be inserted, until the given line(s) where reached. new_line doesn't need `\n`.
+---
+- `get_dict_of_json_file(file_path): dict` - Reads out json file and returns dict.
+- `write_dict_to_json_file(dict, file_path)` - Writes dict to a json file. Overwrites files. 
 
 
 

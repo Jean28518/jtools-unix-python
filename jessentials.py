@@ -8,6 +8,8 @@ import subprocess
 import sys
 import shlex
 
+import jfiles
+
 def ensure_root_privileges():
     if not is_script_running_as_root():
         fail("This script must run as root! Try adding sudo before your command.", errno.EACCES)
@@ -21,10 +23,13 @@ def does_file_exist(file_path):
 def replace_tilde_to_home(folder_path):
     return folder_path.replace("~", os.environ['HOME'])
 
+def get_environment_variable(key):
+    return os.environ[key]
+
 # example for enviroment={'DEBIAN_FRONTEND': 'noninteractive'}
 # if return_output==true: function returns a array of strings
-def run_command(command, print_output=True, return_output=False, enviroment = {}):
-    process = subprocess.Popen(shlex.split(command), stdout=subprocess.PIPE, env=enviroment)
+def run_command(command, print_output=True, return_output=False, enviroment = {}, user=None):
+    process = subprocess.Popen(shlex.split(command), stdout=subprocess.PIPE, env=enviroment, user=user)
     output_lines = [] # In this the output is saved line per line
     if print_output or return_output:
         while True:
@@ -48,6 +53,7 @@ def run_command(command, print_output=True, return_output=False, enviroment = {}
 def get_arguments():
     return sys.argv
 
+## Example: --value_key=firefox
 def get_value_from_arguments(value_key, default=None):
     args = get_arguments()
     for arg in args:
@@ -71,14 +77,13 @@ def is_argument_option_given(long_code="", short_code=""):
     return False
 
 
-# TODO: Implement Errno
 def fail(error_message="", errno=-1):
     if (error_message != ""):
         printerr(error_message)
     else:
         printerr("Script failed!")
 
-    sys.exit()
+    exit(errno)
 
 
 def printerr(msg):
@@ -144,3 +149,16 @@ def unzip_file(file_path):
 
 def import_json_string(string):
     return json.loads(string)
+
+def add_arrays(arr1, arr2):
+    for e in arr2:
+        arr1.append(e)
+    return arr1
+
+def get_current_distribution():
+    file = open("/etc/os-release", "r")
+    lines = file.read().splitlines()
+    for line in lines:
+        if line.startswith("ID="):
+            return line.replace("ID=", "")
+    return "unkown"
